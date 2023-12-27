@@ -11,7 +11,7 @@ void setup() {
  Wire.begin(); // wake up I2C bus
 // set I/O pins to outputs
 // this code block would have to exist for each MCP23017
- Wire.beginTransmission(0x20); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x20); // ADDRESS OF MCP23017 No.1
  Wire.write(0x00); // GPIO-A register
  Wire.write(0x00); // set all of port A to outputs
  Wire.endTransmission();
@@ -20,7 +20,7 @@ void setup() {
  Wire.write(0x00); // set all of port B to outputs
  Wire.endTransmission();
 
- Wire.beginTransmission(0x27); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x27); // ADDRESS OF MCP23017 No.2
  Wire.write(0x00); // GPIO-A register
  Wire.write(0x00); // set all of port A to outputs
  Wire.endTransmission();
@@ -44,20 +44,20 @@ cmd3=Serial.readStringUntil(':');  // BINARY COMMAND FOR THE GPIO-A of 2nd MCP, 
 cmd4=Serial.readStringUntil('\r'); // BINARY COMMAND FOR THE GPIO-B of 2nd MCP, the last always comes before \r
 
 // this code block will have to exist  for each MCP23017 with their respective address 
- Wire.beginTransmission(0x20); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x20); // ADDRESS OF MCP23017 No.1
  Wire.write(0x12); // GPIO-A  (SIDE A)
  Wire.write(cmd1.toInt());  //  command in INTEGER converted from a binary number of 8 bytes (1-on, 0-off)
  Wire.endTransmission();
- Wire.beginTransmission(0x20); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x20); // ADDRESS OF MCP23017 No.1
  Wire.write(0x13); // GPIO-B  (SIDE B)
  Wire.write(cmd2.toInt()); //  command in INTEGER converted from a binary number of 8 bytes (1-on, 0-off)
  Wire.endTransmission();
 
- Wire.beginTransmission(0x27); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x27); // ADDRESS OF MCP23017 No.2
  Wire.write(0x12); // GPIO-A  (SIDE A)
  Wire.write(cmd3.toInt());  //  command in INTEGER converted from a binary number of 8 bytes (1-on, 0-off)
  Wire.endTransmission();
- Wire.beginTransmission(0x27); // ADDRESS OF MCP23017
+ Wire.beginTransmission(0x27); // ADDRESS OF MCP23017 No.2
  Wire.write(0x13); // GPIO-B  (SIDE B)
  Wire.write(cmd4.toInt()); //  command in INTEGER converted from a binary number of 8 bytes (1-on, 0-off)
  Wire.endTransmission(); 
