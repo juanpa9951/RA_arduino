@@ -34,11 +34,5 @@ void loop() {
   servo2.write(110);    
   delay(t2);
   digitalWrite(3,LOW);  
-    
-  /*
-  for (int pos=0;pos<180;pos++){
-  servo1.write(pos);                  // sets the servo position according to the scaled value
-  delay(10);                   
-  }*/        // waits for the servo to get there
-  
+      
 }

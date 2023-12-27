@@ -5,7 +5,7 @@ Servo servo2;  // Define servo2 object
 
 int servo1Pin = 10;  // PWM pin for servo1
 int servo2Pin = 11; // PWM pin for servo2
-int t1 = 80;  //80
+int t1 = 20;  //20
 int t2 = 100;  //100
 
 int onp;
@@ -51,6 +51,7 @@ void loop() {
   }
 
   // here just to verify if the X and Y arrrays are OK
+  /*
   Serial.println("X---> ");
   for (int i = 0; i < sizeof(Xp) / sizeof(Xp[0]); i++) {
     Serial.print(Xp[i]);
@@ -61,6 +62,7 @@ void loop() {
     Serial.print(Yp[i]);
     Serial.print(" ");
   }
+  */
 
   // here we start the projection of the layer looping through the X and Y positions
   for (int position = 0; position < total_pos; position++) {
