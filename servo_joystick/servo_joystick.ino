@@ -22,7 +22,7 @@ int Ys;
 int Xp=90; // DEFINE WITH INITIAL STATE
 int Yp=90; // DEFINE WITH INITIAL STATE
 
-int Selector = 1;  // 1--> servo1     2---> servo2
+int Selector = 2;  // 1--> servo1     2---> servo2
 
 
 void setup() {      // this code works with the JOYSTICK and the serial prompt

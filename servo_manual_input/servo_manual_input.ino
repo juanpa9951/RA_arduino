@@ -33,7 +33,7 @@ void setup() {
 
 void loop() {   // This works with the serial monitor giving inputs like 90,90,90,90
     while(Serial.available()==0){
-  }  // wait until there is something to read  input come separated by COMMA  ex 90,90
+  }  // wait until there is something to read  input come separated by COMMA 
   x=Serial.readStringUntil(',');
   y=Serial.readStringUntil(',');
   x2=Serial.readStringUntil(',');

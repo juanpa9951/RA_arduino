@@ -33,7 +33,7 @@ void setup() {
   Serial.begin(115200); 
   servo1.attach(servo1Pin); // Attach servo1 to its pin
   servo2.attach(servo2Pin); // Attach servo2 to its pin
-  pinMode(3,OUTPUT);
+  pinMode(13,OUTPUT);
 }
 
 void loop() {
