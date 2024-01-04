@@ -195,5 +195,14 @@ void loop() {
         delay(100);
       }  
 
+  }else if (total_pos==0){   // condition for turning off
+        servo1.write(90);
+        servo2.write(90);          
+        digitalWrite(13,LOW);
+        delay(500);
+      
+        Serial.flush();
+
   }
+  Serial.flush();  // LAST ADDED
 }

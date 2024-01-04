@@ -17,6 +17,8 @@ int t2 = 100;  //100
 
 int total_pos;
 
+int Laser=13;
+
 String ch;
 String qty_vertex;
 
@@ -66,7 +68,7 @@ void setup() {
   servo2.attach(servo2Pin); // Attach servo2 to its pin
   servo3.attach(servo3Pin); // Attach servo1 to its pin
   servo4.attach(servo4Pin); // Attach servo2 to its pin
-  pinMode(13,OUTPUT);
+  pinMode(Laser,OUTPUT);
 }
 
 void loop() {
@@ -93,7 +95,7 @@ void loop() {
       }
       // here we start the projection of the layer looping through the X and Y positions
       for (int position = 0; position < total_pos; position++) {
-        digitalWrite(13,HIGH);
+        digitalWrite(Laser,HIGH);
         servo1.write(Xp4[position].toInt());
         servo3.write(Xp4_2[position].toInt());
         delay(t1);
@@ -107,9 +109,10 @@ void loop() {
         servo2.write(90);
         servo3.write(90);
         servo4.write(90);        
-        digitalWrite(13,LOW);
+        digitalWrite(Laser,LOW);
         delay(100);
       }
+      Serial.flush();
 
   }else if (total_pos==5){
       
@@ -128,7 +131,7 @@ void loop() {
       }
       // here we start the projection of the layer looping through the X and Y positions
       for (int position = 0; position < total_pos; position++) {
-        digitalWrite(13,HIGH);
+        digitalWrite(Laser,HIGH);
         servo1.write(Xp5[position].toInt());
         servo3.write(Xp5_2[position].toInt());
         delay(t1);
@@ -142,10 +145,10 @@ void loop() {
         servo2.write(90);
         servo3.write(90);
         servo4.write(90);           
-        digitalWrite(13,LOW);
+        digitalWrite(Laser,LOW);
         delay(100);
       }
-  
+      Serial.flush();
 
   }else if (total_pos==6){
 
@@ -164,7 +167,7 @@ void loop() {
       }
       // here we start the projection of the layer looping through the X and Y positions
       for (int position = 0; position < total_pos; position++) {
-        digitalWrite(13,HIGH);
+        digitalWrite(Laser,HIGH);
         servo1.write(Xp6[position].toInt());
         servo3.write(Xp6_2[position].toInt());
         delay(t1);
@@ -178,10 +181,21 @@ void loop() {
         servo2.write(90);
         servo3.write(90);
         servo4.write(90);           
-        digitalWrite(13,LOW);
+        digitalWrite(Laser,LOW);
         delay(100);
       }
-  
+      Serial.flush();
+
+  }else if (total_pos==0){   // condition for turning off
+        servo1.write(90);
+        servo2.write(90);
+        servo3.write(90);
+        servo4.write(90);           
+        digitalWrite(Laser,LOW);
+        delay(500);
+      
+        Serial.flush();
+
   }
   Serial.flush();  // LAST ADDED
 }
