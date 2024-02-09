@@ -12,8 +12,8 @@ int servo2Pin = 11; // PWM pin for servo2    Blue
 int servo3Pin = 5;  // PWM pin for servo3    Black
 int servo4Pin = 6; // PWM pin for servo4     Blue
 
-int t1 = 80;
-int t2 = 100;
+int t1 = 180;    //80
+int t2 = 180;   //100
 
 void setup() {
   servo1.attach(servo1Pin); // Attach servo1 to its pin
@@ -21,35 +21,36 @@ void setup() {
   servo3.attach(servo3Pin); // Attach servo1 to its pin
   servo4.attach(servo4Pin); // Attach servo2 to its pin
   pinMode(13,OUTPUT);
+  Serial.begin(9600); 
 }
 
 void loop() {
   // scale it for use with the servo (value between 0 and 180)
+
   digitalWrite(13,HIGH);
-  servo1.write(104);
-  servo3.write(117);
+  servo1.write(49);
+  servo3.write(99);
   delay(t1);
-  servo2.write(100);
-  servo4.write(104);  
+  servo2.write(57);
+  servo4.write(130);  
   delay(t2);
-  servo1.write(70);
-  servo3.write(81);
+  servo1.write(47);
+  servo3.write(101);
   delay(t1);
-  servo2.write(95);
-  servo4.write(102);    
+  servo2.write(128);
+  servo4.write(60);    
   delay(t2);
-  servo1.write(73);
-  servo3.write(86);
+  servo1.write(95);
+  servo3.write(59);
   delay(t1);
-  servo2.write(63);
-  servo4.write(71);    
+  servo2.write(128);
+  servo4.write(58);    
   delay(t2);
-  servo1.write(109);
-  servo3.write(122);
+  servo1.write(95);
+  servo3.write(55);
   delay(t1);
-  servo2.write(69);
-  servo4.write(75);    
+  servo2.write(57);
+  servo4.write(123);    
   delay(t2);
   digitalWrite(13,LOW);
-
 }

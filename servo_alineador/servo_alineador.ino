@@ -19,11 +19,13 @@ void setup() {
   servo3.attach(servo3Pin); // Attach servo1 to its pin
   servo4.attach(servo4Pin); // Attach servo2 to its pin
   pinMode(13,OUTPUT);
+  pinMode(4,OUTPUT);
 }
 
 void loop() {
   // scale it for use with the servo (value between 0 and 180)
   digitalWrite(13,HIGH);
+  digitalWrite(4,HIGH);
   
   servo1.write(90);
   servo3.write(90);
@@ -74,4 +76,5 @@ void loop() {
   servo4.write(60);     
 
   digitalWrite(13,LOW);
+  digitalWrite(4,LOW);
 }
