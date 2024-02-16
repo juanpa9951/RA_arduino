@@ -25,8 +25,14 @@ void setup() {
 void loop() {
   // Move the servo to different positions
   for (int angle = SERVO_MIN_ANGLE; angle <= SERVO_MAX_ANGLE; angle += 10) {
-    setServoAngle(SERVO_PIN, angle);
-    setServoAngle(9, angle);
+    setServoAngle(0, angle);
+    setServoAngle(1, angle);
+    setServoAngle(2, angle);
+    setServoAngle(3, angle);
+    setServoAngle(4, angle);
+    setServoAngle(5, angle);
+    setServoAngle(6, angle);
+    setServoAngle(7, angle);
     delay(500); // Delay to allow servo to reach the desired position
   }
 }

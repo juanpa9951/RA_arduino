@@ -8,14 +8,14 @@
 // Create the PWM servo driver object
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(PCA9685_ADDRESS);
 
-// Define constants for the servos
+// Define constants for the servos   ORDER OF SERVOS PHYSICALLY IS COUNTERCLOKWISE FROM THE BOTTOM
 #define Servo_Th_x_bot 0     // Servo connected to channel 0 of PCA9685
-#define Servo_Th_x_top 1     // Servo connected to channel 1 of PCA9685
-#define Servo_Th_y_bot 2     // Servo connected to channel 2 of PCA9685
+#define Servo_Th_y_bot 1     // Servo connected to channel 1 of PCA9685
+#define Servo_Th_x_top 2     // Servo connected to channel 2 of PCA9685
 #define Servo_Th_y_top 3     // Servo connected to channel 3 of PCA9685
 #define Servo_B_x_bot 4     // Servo connected to channel 4 of PCA9685
-#define Servo_B_x_top 5     // Servo connected to channel 5 of PCA9685
-#define Servo_B_y_bot 6     // Servo connected to channel 6 of PCA9685
+#define Servo_B_y_bot 5     // Servo connected to channel 5 of PCA9685
+#define Servo_B_x_top 6     // Servo connected to channel 6 of PCA9685
 #define Servo_B_y_top 7     // Servo connected to channel 7 of PCA9685
 #define SERVO_MIN_PULSE_WIDTH 100   // Minimum pulse width in microseconds 100    50
 #define SERVO_MAX_PULSE_WIDTH 500   // Maximum pulse width in microseconds 500   500
@@ -71,7 +71,7 @@ void loop() {
       Inputs[position]=Serial.readStringUntil('\r'); // last part of the command from python
     }
   }
-  // here we separate the received inputs
+  // here we separate the received inputs in the order they come from python
   Th_x_bot=Inputs[0];
   Th_x_top=Inputs[1];
   Th_y_bot=Inputs[2];
@@ -81,23 +81,23 @@ void loop() {
   B_y_bot=Inputs[6];
   B_y_top=Inputs[7];
   // here we print the inputs to verify.....................
-  Serial.print(" 1 Value = ");
+  Serial.print(" Th_x_bot = ");
   Serial.println(Th_x_bot);
-  Serial.print(" 2 Value = ");
+  Serial.print(" Th_x_top = ");
   Serial.println(Th_x_top);
-  Serial.print(" 3 Value = ");
+  Serial.print(" Th_y_bot = ");
   Serial.println(Th_y_bot);
-  Serial.print(" 4 Value = ");
+  Serial.print(" Th_y_top = ");
   Serial.println(Th_y_top);
-  Serial.print(" 5 Value = ");
+  Serial.print(" B_x_bot = ");
   Serial.println(B_x_bot);
-  Serial.print(" 6 Value = ");
+  Serial.print(" B_x_top = ");
   Serial.println(B_x_top);
-  Serial.print(" 7 Value = ");
+  Serial.print(" B_y_bot = ");
   Serial.println(B_y_bot);
-  Serial.print(" 8 Value = ");
+  Serial.print(" B_y_top = ");
   Serial.println(B_y_top);
-  //..................................................
+  //...........HERE WE SET THE ANGLES FOR EACH SERVO.......................................
   setServoAngle(Servo_Th_x_bot, Th_x_bot.toInt());
   setServoAngle(Servo_Th_x_top, Th_x_top.toInt());
   setServoAngle(Servo_Th_y_bot, Th_y_bot.toInt());
