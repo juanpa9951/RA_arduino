@@ -10,8 +10,8 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(PCA9685_ADDRESS);
 // Define constants for the servo
 #define SERVO_MIN_PULSE_WIDTH 100   // Minimum pulse width in microseconds 100    50
 #define SERVO_MAX_PULSE_WIDTH 500   // Maximum pulse width in microseconds 500   500
-#define SERVO_MIN_ANGLE 0            // Minimum angle in degrees
-#define SERVO_MAX_ANGLE 180          // Maximum angle in degrees
+#define SERVO_MIN_ANGLE 40            // Minimum angle in degrees
+#define SERVO_MAX_ANGLE 80          // Maximum angle in degrees
 
 void setup() {
   Serial.begin(115200);
@@ -28,8 +28,17 @@ void loop() {
     setServoAngle(1, angle);
     setServoAngle(2, angle);
     setServoAngle(3, angle);
-    delay(100); // Delay to allow servo to reach the desired position
+    delay(5000); // Delay to allow servo to reach the desired position
   }
+  for (int angle = SERVO_MAX_ANGLE; angle <= SERVO_MIN_ANGLE; angle -= 10) {
+    setServoAngle(0, angle);
+    setServoAngle(1, angle);
+    setServoAngle(2, angle);
+    setServoAngle(3, angle);
+    delay(5000); // Delay to allow servo to reach the desired position
+  }
+
+
 }
 
 // Function to set the angle of the servo

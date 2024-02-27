@@ -29,10 +29,6 @@ int Laser_X_top=3;
 int Laser_Y_bot=4;
 int Laser_Y_top=5;
 
-// DELAYS FOR MOVING THE SERVOS
-int t1 = 20;  //20
-int t2 = 100;  //100
-//...............................................
 
 int total_pos=8; // how many inputs we receive from python
 
@@ -46,10 +42,10 @@ String B_x_top;
 String B_y_bot;
 String B_y_top;
 
-String Inputs[]={Th_x_bot,Th_x_top,Th_y_bot,Th_y_top,B_x_bot,B_x_top,B_y_bot,B_y_top};
+String Inputs[]={Th_x_bot,Th_y_bot,Th_x_top,Th_y_top,B_x_bot,B_y_bot,B_x_top,B_y_top};  
 
 void setup() {
-  Serial.begin(115200);   // critical for python communication  //115200 for python
+  Serial.begin(115200);   // critical for python communication  //115200 for python   //9600 for IDE user serial monitor
   pinMode(Laser_X_bot,OUTPUT);
   pinMode(Laser_X_top,OUTPUT);
   pinMode(Laser_Y_bot,OUTPUT);
@@ -73,38 +69,38 @@ void loop() {
   }
   // here we separate the received inputs in the order they come from python
   Th_x_bot=Inputs[0];
-  Th_x_top=Inputs[1];
-  Th_y_bot=Inputs[2];
+  Th_y_bot=Inputs[1];
+  Th_x_top=Inputs[2];
   Th_y_top=Inputs[3];
   B_x_bot=Inputs[4];
-  B_x_top=Inputs[5];
-  B_y_bot=Inputs[6];
+  B_y_bot=Inputs[5];
+  B_x_top=Inputs[6];
   B_y_top=Inputs[7];
   // here we print the inputs to verify.....................
   Serial.print(" Th_x_bot = ");
   Serial.println(Th_x_bot);
-  Serial.print(" Th_x_top = ");
-  Serial.println(Th_x_top);
   Serial.print(" Th_y_bot = ");
   Serial.println(Th_y_bot);
+  Serial.print(" Th_x_top = ");
+  Serial.println(Th_x_top);
   Serial.print(" Th_y_top = ");
   Serial.println(Th_y_top);
   Serial.print(" B_x_bot = ");
   Serial.println(B_x_bot);
-  Serial.print(" B_x_top = ");
-  Serial.println(B_x_top);
   Serial.print(" B_y_bot = ");
   Serial.println(B_y_bot);
+  Serial.print(" B_x_top = ");
+  Serial.println(B_x_top);
   Serial.print(" B_y_top = ");
   Serial.println(B_y_top);
   //...........HERE WE SET THE ANGLES FOR EACH SERVO.......................................
   setServoAngle(Servo_Th_x_bot, Th_x_bot.toInt());
-  setServoAngle(Servo_Th_x_top, Th_x_top.toInt());
   setServoAngle(Servo_Th_y_bot, Th_y_bot.toInt());
+  setServoAngle(Servo_Th_x_top, Th_x_top.toInt());
   setServoAngle(Servo_Th_y_top, Th_y_top.toInt());
   setServoAngle(Servo_B_x_bot, B_x_bot.toInt());
-  setServoAngle(Servo_B_x_top, B_x_top.toInt());
   setServoAngle(Servo_B_y_bot, B_y_bot.toInt());
+  setServoAngle(Servo_B_x_top, B_x_top.toInt());
   setServoAngle(Servo_B_y_top, B_y_top.toInt());  
   
   //  here we assign the values
