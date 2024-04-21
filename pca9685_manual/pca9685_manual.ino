@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
-//   57,58,55,56,90,90,90,90
+//   53,58,55,53,99,97,85,86
 
 // The PCA9685 address
 #define PCA9685_ADDRESS 0x40

@@ -10,11 +10,13 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(PCA9685_ADDRESS);
 // Define constants for the servo
 #define SERVO_MIN_PULSE_WIDTH 100   // Minimum pulse width in microseconds 100    50
 #define SERVO_MAX_PULSE_WIDTH 500   // Maximum pulse width in microseconds 500   500
-#define SERVO_MIN_ANGLE 50            // Minimum angle in degrees
-#define SERVO_MAX_ANGLE 65          // Maximum angle in degrees
+#define SERVO_MIN_ANGLE 65            // Minimum angle in degrees
+#define SERVO_MAX_ANGLE 161         // Maximum angle in degrees
+#define AngleStep 2
+#define SelectedServo 4
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   pwm.begin();
   pwm.setPWMFreq(50);  // Analog servos typically run at 50Hz - 60Hz updates
 
@@ -23,21 +25,13 @@ void setup() {
 
 void loop() {
   // Move the servo to different positions
-  for (int angle = SERVO_MIN_ANGLE; angle <= SERVO_MAX_ANGLE; angle += 3) {
-    setServoAngle(2, angle);
-    //setServoAngle(1, angle);
-    //setServoAngle(2, angle);
-    //setServoAngle(3, angle);
-    delay(7000); // Delay to allow servo to reach the desired position
-  }
-  for (int angle = SERVO_MAX_ANGLE; angle <= SERVO_MIN_ANGLE; angle -= 3) {
-    setServoAngle(2, angle);
-    //setServoAngle(1, angle);
-    //setServoAngle(2, angle);
-    //setServoAngle(3, angle);
-    delay(7000); // Delay to allow servo to reach the desired position
-  }
+  for (int angle = SERVO_MIN_ANGLE; angle <= SERVO_MAX_ANGLE; angle += AngleStep) {
+    setServoAngle(SelectedServo, angle);
+    Serial.print("ANGLE = ");
+    Serial.println(angle);
+    delay(5000); // Delay to allow servo to reach the desired position
 
+  }
 
 }
 
@@ -48,4 +42,3 @@ void setServoAngle(uint8_t servoNum, int angle) {
   // Set pulse width
   pwm.setPWM(servoNum, 0, pulse_width);
 }
-
